@@ -2,11 +2,12 @@
 #define _F_SERIAL_H_
 
 #include <string>
+#include <fstream>
 #include "Serial.h"
 
 class IFSerial {
     Serial serial;
-    std::string fileName;
+    std::ifstream inFile;
 
 public:
     IFSerial(std::string);
@@ -27,7 +28,7 @@ public:
 
 class OFSerial {
     Serial serial;
-    std::string fileName;
+    std::ofstream outFile;
 
 public:
     OFSerial(std::string);
