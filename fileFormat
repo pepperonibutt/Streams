@@ -1,0 +1,5 @@
+#! /bin/bash
+
+for fileName in $(find src -name "*.cc" -o -name "*.h"); do
+    clang-format -i -style=file ${fileName}
+done
