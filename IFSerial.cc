@@ -15,20 +15,26 @@ IFSerial::IFSerial(string s){
 	serial.str(temp);
 }
 
-IFSerial&IFSerial:: operator>>(bool &out){
+IFSerial::~IFSerial() {
+    inFile.close();
+}
+
+IFSerial &IFSerial::operator>>(bool &out){
 	try{
 		serial.get(out);
 	} catch(...){
 		failed=true;
 	}
-	
+    return *this;
 }
+
 IFSerial&IFSerial:: operator>>(int &out){
 	try{
 		serial.get(out);
 	} catch(...){
 		failed=true;
 	}
+    return *this;
 }
 IFSerial&IFSerial:: operator>>(short &out){
 	try{
@@ -36,6 +42,8 @@ IFSerial&IFSerial:: operator>>(short &out){
 	} catch(...){
 		failed=true;
 	}
+
+    return *this;
 }
 IFSerial&IFSerial ::operator>>(long &out){
 	try{
@@ -43,6 +51,8 @@ IFSerial&IFSerial ::operator>>(long &out){
 	} catch(...){
 		failed=true;
 	}
+
+    return *this;
 }
 IFSerial&IFSerial::operator>>(char &out){
 	try{
@@ -50,6 +60,8 @@ IFSerial&IFSerial::operator>>(char &out){
 	} catch(...){
 		failed=true;
 	}
+
+    return *this;
 }
 IFSerial&IFSerial:: operator>>(std::string &out){
 	try{
@@ -57,15 +69,18 @@ IFSerial&IFSerial:: operator>>(std::string &out){
 	} catch(...){
 		failed=true;
 	}
+
+    return *this;
 }
 
-bool eof() const{
-return serial.empty();
+bool IFSerial::eof() const{
+    return serial.empty();
 }
-bool fail() const{
+
+bool IFSerial::fail() const{
 	return failed;
 }
 
-operator bool() const{
+IFSerial::operator bool() const{
 	return !eof()&&!fail();
 }
