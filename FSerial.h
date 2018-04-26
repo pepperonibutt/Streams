@@ -30,17 +30,18 @@ public:
 class OFSerial {
     Serial serial;
     std::ofstream outFile;
+    bool failed;
 
 public:
     OFSerial(std::string);
     ~OFSerial();
 
-    OFSerial &operator<<(bool &);
-    OFSerial &operator<<(int &);
-    OFSerial &operator<<(short &);
-    OFSerial &operator<<(long &);
-    OFSerial &operator<<(char &);
-    OFSerial &operator<<(std::string &);
+    OFSerial &operator<<(const bool &);
+    OFSerial &operator<<(const int &);
+    OFSerial &operator<<(const short &);
+    OFSerial &operator<<(const long &);
+    OFSerial &operator<<(const char &);
+    //OFSerial &operator<<(const std::string &);
     
     bool fail() const;
 
