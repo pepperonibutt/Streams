@@ -104,6 +104,45 @@ using namespace std;
         //assert(foo1 == now);
 
         cout << "Test2 ends\n";
+        cout << "Test3 begins.\n";
+        {
+            OFSerial out("data");
+            out << true;
+            out << 'x' << 42;
+        }
+
+        IFSerial in("data");
+        bool b3; char c3; int i3;
+        in >> b3 >> c3;
+        in >> i3;
+        assert(b3);
+        assert(c3 == 'x');
+        assert(i3 == 42);
+        assert(in);
+        assert(!in.fail());
+        assert(!in.eof());
+        in >> i3;
+        assert(!in);        // same as in.fail()
+        assert(in.fail());  // a conversion (in >> i) failed
+        assert(in.eof());   // we hit end-of-file
+
+
+        // Read the raw datafile
+        ifstream raw("data");
+        string data;
+        while (raw.get(c))
+            data += c;
+        assert(data == "t" "cx" "i\x10\x2a");   // true, 'x', 42
+
+        // Try writing to a file that can’t be created.
+        OFSerial o("/this/does/not/exist");
+        assert(!o);
+        assert(o.fail());
+        o << 3346790;       // Must not complain, throw, or exit.
+        assert(!o);
+        assert(o.fail());
+
+        cout << "Test ends.\n";
 
         return 0;
     }

@@ -8,6 +8,7 @@
 class IFSerial {
     Serial serial;
     std::ifstream inFile;
+    bool failed;
 
 public:
     IFSerial(std::string);
