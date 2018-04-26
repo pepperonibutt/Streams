@@ -3,6 +3,7 @@
 #include <cassert>
 
 #include "Serial.h"
+#include "FSerial.h"
 
 using namespace std;
 

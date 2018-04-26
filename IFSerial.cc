@@ -12,10 +12,10 @@ IFSerial::IFSerial(string s){
 	while (inFile.get(c)){
 		temp+=c;
 	}
-	serial(temp);
+	serial.str(temp);
 }
 
-IFSerial&::IFSerial operator>>(bool &out){
+IFSerial&IFSerial:: operator>>(bool &out){
 	try{
 		serial.get(out);
 	} catch(...){
@@ -23,35 +23,35 @@ IFSerial&::IFSerial operator>>(bool &out){
 	}
 	
 }
-IFSerial&::IFSerial operator>>(int &out){
+IFSerial&IFSerial:: operator>>(int &out){
 	try{
 		serial.get(out);
 	} catch(...){
 		failed=true;
 	}
 }
-IFSerial&::IFSerial operator>>(short &out){
+IFSerial&IFSerial:: operator>>(short &out){
 	try{
 		serial.get(out);
 	} catch(...){
 		failed=true;
 	}
 }
-IFSerial&::IFSerial operator>>(long &out){
+IFSerial&IFSerial ::operator>>(long &out){
 	try{
 		serial.get(out);
 	} catch(...){
 		failed=true;
 	}
 }
-IFSerial&::IFSerial operator>>(char &out){
+IFSerial&IFSerial::operator>>(char &out){
 	try{
 		serial.get(out);
 	} catch(...){
 		failed=true;
 	}
 }
-IFSerial&::IFSerial operator>>(std::string &out){
+IFSerial&IFSerial:: operator>>(std::string &out){
 	try{
 		serial.get(out);
 	} catch(...){
