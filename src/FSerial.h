@@ -8,7 +8,7 @@
 class IFSerial {
   Serial serial;
   std::ifstream inFile;
-  bool failed;
+  bool failed{false};
 
 public:
   IFSerial(std::string);
@@ -19,7 +19,7 @@ public:
   IFSerial &operator>>(short &);
   IFSerial &operator>>(long &);
   IFSerial &operator>>(char &);
-  IFSerial &operator>>(std::string &);
+  //IFSerial &operator>>(std::string &);
 
   bool eof() const;
   bool fail() const;
@@ -30,7 +30,7 @@ public:
 class OFSerial {
   Serial serial;
   std::ofstream outFile;
-  bool failed;
+  bool failed{false};
 
 public:
   OFSerial(std::string);

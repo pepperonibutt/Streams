@@ -7,12 +7,14 @@ IFSerial::IFSerial(string s) {
   inFile.open(s);
   if (!inFile.is_open())
     failed = true;
-  string temp = "";
-  char c;
-  while (inFile.get(c)) {
-    temp += c;
+  else {
+    string temp = "";
+    char c;
+    while (inFile.get(c)) {
+         temp += c;
+    }
+    serial.str(temp);
   }
-  serial.str(temp);
 }
 
 IFSerial::~IFSerial() { inFile.close(); }
@@ -61,6 +63,7 @@ IFSerial &IFSerial::operator>>(char &out) {
 
   return *this;
 }
+/*
 IFSerial &IFSerial::operator>>(std::string &out) {
   try {
     serial.get(out);
@@ -70,9 +73,10 @@ IFSerial &IFSerial::operator>>(std::string &out) {
 
   return *this;
 }
+*/
 
 bool IFSerial::eof() const { return serial.empty(); }
 
 bool IFSerial::fail() const { return failed; }
 
-IFSerial::operator bool() const { return !eof() && !fail(); }
+IFSerial::operator bool() const { return !eof() || !fail(); }
