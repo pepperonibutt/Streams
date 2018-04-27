@@ -1,0 +1,19 @@
+Test begins
+ic5lB 7 0
+c5lB 5 0 4
+lB 3 0
+test long: lB 3 0
+test long:  0 1
+Test ends
+Test2 begins
+t
+good 1 
+ti
+good 2 
+good 3 
+good 4 
+good 5 
+Test2 ends
+Test3 begins.
+1
+

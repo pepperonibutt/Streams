@@ -134,6 +134,7 @@ int main() {
   assert(i3 == 42);
   assert(in);
   assert(!in.fail());
+  in.print();
   assert(!in.eof());
   in >> i3;
   assert(!in);       // same as in.fail()
