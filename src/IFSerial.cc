@@ -7,93 +7,88 @@ IFSerial::IFSerial(string s) {
   inFile.open(s);
   if (!inFile.is_open())
     failed = true;
-  else{
-  string temp = "";
-  char c;
-  while (inFile.get(c)) {
-    temp += c;
-  }
-  serial.str(temp);
+  else {
+    string temp = "";
+    char c;
+    while (inFile.get(c)) {
+      temp += c;
+    }
+    serial.str(temp);
   }
 }
 
-void IFSerial::print(){
+void IFSerial::print() {
   cout << serial.empty() << endl;
-  cout << serial<<endl;
+  cout << serial << endl;
 }
 
 IFSerial::~IFSerial() { inFile.close(); }
 
 IFSerial &IFSerial::operator>>(bool &out) {
-  if (serial.empty()){
+  if (serial.empty()) {
     endoffile = true;
-    failed=true;
-  }
-  else{
-  try {
-    serial.get(out);
-  } catch (...) {
     failed = true;
+  } else {
+    try {
+      serial.get(out);
+    } catch (...) {
+      failed = true;
+    }
   }
-  
-}return *this;
+  return *this;
 }
 
 IFSerial &IFSerial::operator>>(int &out) {
-  if (serial.empty()){
+  if (serial.empty()) {
     endoffile = true;
-    failed=true;
-  }
-  else{
-  try {
-    serial.get(out);
-  } catch (...) {
     failed = true;
+  } else {
+    try {
+      serial.get(out);
+    } catch (...) {
+      failed = true;
+    }
   }
-  
-}return *this;
+  return *this;
 }
 IFSerial &IFSerial::operator>>(short &out) {
-  if (serial.empty()){
+  if (serial.empty()) {
     endoffile = true;
-    failed=true;
-  }
-  else{
-  try {
-    serial.get(out);
-  } catch (...) {
     failed = true;
+  } else {
+    try {
+      serial.get(out);
+    } catch (...) {
+      failed = true;
+    }
   }
-  
-}return *this;
+  return *this;
 }
 IFSerial &IFSerial ::operator>>(long &out) {
-  if (serial.empty()){
+  if (serial.empty()) {
     endoffile = true;
-    failed=true;
-  }
-  else{
-  try {
-    serial.get(out);
-  } catch (...) {
     failed = true;
+  } else {
+    try {
+      serial.get(out);
+    } catch (...) {
+      failed = true;
+    }
   }
-  
-}return *this;
+  return *this;
 }
 IFSerial &IFSerial::operator>>(char &out) {
-  if (serial.empty()){
+  if (serial.empty()) {
     endoffile = true;
-    failed=true;
-  }
-  else{
-  try {
-    serial.get(out);
-  } catch (...) {
     failed = true;
+  } else {
+    try {
+      serial.get(out);
+    } catch (...) {
+      failed = true;
+    }
   }
-  
-}return *this;
+  return *this;
 }
 /*IFSerial &IFSerial::operator>>(std::string &out) {
   try {
